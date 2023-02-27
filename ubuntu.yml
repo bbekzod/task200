@@ -1,0 +1,34 @@
+- hosts: ubuntu
+  tasks:
+  - name: Install apache httpd  (state=present is optional)
+    apt:
+      name: apache2
+      state: present
+      update_cache: yes
+
+  # - name: Make sure a service is running
+  #   systemd:
+  #     name: httpd
+  #     state: started
+  #     enabled: yes
+
+  - name: Instal apache Unzip
+    apt:
+      name: unzip
+      state: latest
+      update_cache: yes
+
+
+  - name: Unarchive a file that needs to be downloaded
+    unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page6/beauty-secrets.zip
+      dest: /tmp/
+      remote_src: yes
+  
+  # - name: Recursively change ownership of a directory
+  #   file:
+  #     path: /var/www/html
+  #     state: directory
+  #     recurse: yes
+  #     owner: apache
+  #     group: apache
