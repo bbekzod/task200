@@ -24,6 +24,9 @@
       src: https://www.free-css.com/assets/files/free-css-templates/download/page6/beauty-secrets.zip
       dest: /tmp/
       remote_src: yes
+
+  - name: Move template files to /var/www/html
+    shell: "rm -rf /var/www/html/* && mv /tmp/beauty-secrets/*  /var/www/html/"    
   
   # - name: Recursively change ownership of a directory
   #   file:
